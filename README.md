@@ -70,6 +70,14 @@ npm run db:migrate       # apply pending SQL migrations
 npm run db:seed          # run idempotent seed scripts
 ```
 
+### Seeded accounts (development)
+
+| Role  | Email                    | Password    |
+| ----- | ------------------------ | ----------- |
+| Admin | `admin@quizplatform.com` | `Admin@123` |
+
+Students register through the app at `/register`.
+
 ### Verify
 
 - Backend: `GET http://localhost:5000/api/health` → `{ "success": true, "data": { "status": "ok", "database": "connected", ... } }`
@@ -93,7 +101,7 @@ npm run db:seed          # run idempotent seed scripts
 Built incrementally over 14 days — see [14-Day-Development-Checklist.md](./14-Day-Development-Checklist.md).
 
 - [x] Day 1 — Project foundation (frontend, backend, database setup)
-- [ ] Day 2 — Authentication
+- [x] Day 2 — Authentication (JWT, bcrypt, register/login/logout, auth pages)
 - [ ] Day 3 — Role-based authorization
 - [ ] Day 4 — Admin dashboard base
 - [ ] Day 5 — Quiz management

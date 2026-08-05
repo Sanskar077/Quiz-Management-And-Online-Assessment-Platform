@@ -11,13 +11,20 @@
     "db:seed": "node src/db/seed.js",
     "format": "node node_modules/prettier/bin/prettier.cjs --write \"src/**/*.js\""
   },
-  "keywords": ["quiz", "assessment", "express", "postgresql"],
+  "keywords": [
+    "quiz",
+    "assessment",
+    "express",
+    "postgresql"
+  ],
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
     "morgan": "^1.11.0",
     "pg": "^8.22.0"
   },

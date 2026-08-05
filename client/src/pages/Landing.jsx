@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../services/api.js';
+import { useAuth } from '../context/AuthContext.jsx';
 
 function Landing() {
+  const { user, loading, logout } = useAuth();
   const [apiStatus, setApiStatus] = useState('checking');
 
   useEffect(() => {
@@ -26,7 +29,44 @@ function Landing() {
         <p className="mt-4 text-lg text-slate-600">
           Online Quiz Management &amp; Assessment Platform
         </p>
-        <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm shadow-sm">
+
+        {!loading && (
+          <div className="mt-8">
+            {user ? (
+              <div className="space-y-4">
+                <p className="text-slate-700">
+                  Logged in as <span className="font-semibold">{user.name}</span>{' '}
+                  <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-700">
+                    {user.role}
+                  </span>
+                </p>
+                <button
+                  onClick={logout}
+                  className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+                >
+                  Log out
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center justify-center gap-3">
+                <Link
+                  to="/login"
+                  className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
+                >
+                  Log in
+                </Link>
+                <Link
+                  to="/register"
+                  className="rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+                >
+                  Register
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+
+        <div className="mt-10 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm shadow-sm">
           <span className="text-slate-500">API status:</span>
           <span
             className={`rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${statusStyles[apiStatus]}`}
