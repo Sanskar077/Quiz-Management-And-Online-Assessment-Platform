@@ -104,7 +104,7 @@ Built incrementally over 14 days — see [14-Day-Development-Checklist.md](./14-
 - [x] Day 2 — Authentication (JWT, bcrypt, register/login/logout, auth pages)
 - [x] Day 3 — Role-based authorization (requireAdmin/requireStudent, protected routes, error pages)
 - [x] Day 4 — Admin dashboard base (AdminLayout, StatCard, dashboard summary API, real dashboard page)
-- [ ] Day 5 — Quiz management
+- [x] Day 5 — Quiz management (CRUD API, QuizzesPage with table, create/edit modal, publish/unpublish, delete)
 - [ ] Day 6 — Categories & questions
 - [ ] Day 7 — Student quiz browsing
 - [ ] Day 8 — Quiz attempt flow

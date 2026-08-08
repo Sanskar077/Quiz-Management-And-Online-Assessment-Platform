@@ -8,6 +8,8 @@ const healthRoutes = require('./routes/health.routes');
 const authRoutes = require('./routes/auth.routes');
 const adminRoutes = require('./routes/admin.routes');
 const studentRoutes = require('./routes/student.routes');
+const quizRoutes = require('./routes/quiz.routes');
+const categoryRoutes = require('./routes/category.routes');
 const { notFound, errorHandler } = require('./middleware/error.middleware');
 
 const app = express();
@@ -33,6 +35,8 @@ app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/student', studentRoutes);
+app.use('/api/quizzes', quizRoutes);
+app.use('/api/categories', categoryRoutes);
 
 // 404 + centralized error handling
 app.use(notFound);

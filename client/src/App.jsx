@@ -11,6 +11,7 @@ import Forbidden from './pages/Forbidden.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 import AdminDashboard from './pages/admin/AdminDashboard.jsx';
+import QuizzesPage from './pages/admin/QuizzesPage.jsx';
 import StudentDashboard from './pages/student/StudentDashboard.jsx';
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
       <Route element={<ProtectedRoute role="ADMIN" />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminDashboard />} />
-          {/* Days 5–7: /admin/users, /admin/categories, /admin/quizzes will be added here */}
+          <Route path="/admin/quizzes" element={<QuizzesPage />} />
         </Route>
       </Route>
 
