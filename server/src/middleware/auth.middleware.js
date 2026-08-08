@@ -38,4 +38,26 @@ const requireAuth = async (req, res, next) => {
   }
 };
 
-module.exports = { requireAuth };
+/**
+ * Requires the authenticated user to have the ADMIN role.
+ * Must be used after requireAuth in the middleware chain.
+ */
+const requireAdmin = (req, res, next) => {
+  if (req.user?.role !== 'ADMIN') {
+    return next(new ApiError(403, 'Admin access required'));
+  }
+  next();
+};
+
+/**
+ * Requires the authenticated user to have the STUDENT role.
+ * Must be used after requireAuth in the middleware chain.
+ */
+const requireStudent = (req, res, next) => {
+  if (req.user?.role !== 'STUDENT') {
+    return next(new ApiError(403, 'Student access required'));
+  }
+  next();
+};
+
+module.exports = { requireAuth, requireAdmin, requireStudent };

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import FormInput from '../components/FormInput.jsx';
 import Alert from '../components/Alert.jsx';
@@ -8,6 +8,7 @@ import Alert from '../components/Alert.jsx';
 function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [serverError, setServerError] = useState('');
   const {
     register,
@@ -18,8 +19,15 @@ function Login() {
   const onSubmit = async (values) => {
     setServerError('');
     try {
-      await login(values);
-      navigate('/');
+      const user = await login(values);
+      // Redirect to where the user originally tried to go, or to the
+      // appropriate dashboard based on their role.
+      const from = location.state?.from?.pathname;
+      if (from && from !== '/login') {
+        navigate(from, { replace: true });
+      } else {
+        navigate(user.role === 'ADMIN' ? '/admin' : '/student', { replace: true });
+      }
     } catch (err) {
       setServerError(err.response?.data?.message || 'Login failed. Please try again.');
     }

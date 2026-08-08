@@ -102,7 +102,7 @@ Built incrementally over 14 days — see [14-Day-Development-Checklist.md](./14-
 
 - [x] Day 1 — Project foundation (frontend, backend, database setup)
 - [x] Day 2 — Authentication (JWT, bcrypt, register/login/logout, auth pages)
-- [ ] Day 3 — Role-based authorization
+- [x] Day 3 — Role-based authorization (requireAdmin/requireStudent, protected routes, error pages)
 - [ ] Day 4 — Admin dashboard base
 - [ ] Day 5 — Quiz management
 - [ ] Day 6 — Categories & questions

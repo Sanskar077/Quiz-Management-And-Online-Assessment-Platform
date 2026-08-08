@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const config = require('./config/env');
 const healthRoutes = require('./routes/health.routes');
 const authRoutes = require('./routes/auth.routes');
+const adminRoutes = require('./routes/admin.routes');
+const studentRoutes = require('./routes/student.routes');
 const { notFound, errorHandler } = require('./middleware/error.middleware');
 
 const app = express();
@@ -29,6 +31,8 @@ if (config.env === 'development') {
 // API routes
 app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/student', studentRoutes);
 
 // 404 + centralized error handling
 app.use(notFound);
